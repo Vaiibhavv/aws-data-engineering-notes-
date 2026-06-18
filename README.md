@@ -537,3 +537,8 @@ However, in modern formats like Iceberg and Delta Lake, files may be retained fo
 * Trino
 * Data Warehousing
 * Medallion Architecture
+
+
+
+Author: Vaibhav Patil
+GitHub: https://github.com/Vaiibhavv
