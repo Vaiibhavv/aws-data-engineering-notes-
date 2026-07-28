@@ -109,3 +109,13 @@ These statistics are stored in the Glue Data Catalog and are used by query engin
 - Also need to add IAM Role with below managed and custom policies, 
 
 ![alt text](image-13.png)
+
+### Visual ETL Jobs in Glue
+- The visual ETL Jobs are created by using drag and drop plugin connections. 
+- Visual ETL Jobs based on the Apache Spark Engine.
+
+![alt text](image-14.png)
+
+-- Some Built In Transformation in Glue Studio
+
+![alt text](image-15.png)
