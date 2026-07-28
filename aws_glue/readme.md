@@ -5,7 +5,7 @@
 - Monitoring - Cloudformation metrics, job run insight, cloud trail
 
 * Aws Glue Component 
-1. Data Catalog - we can considere it is a cetral repository , seats between the source data and final data to pe prepared,
+1. Data Catalog - we can considere it is a central repository , seats between the source data and final data to pe prepared,
 
 ![alt text](image.png)
  
