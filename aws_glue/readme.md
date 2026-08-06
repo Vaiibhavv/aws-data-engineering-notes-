@@ -119,3 +119,44 @@ These statistics are stored in the Glue Data Catalog and are used by query engin
 -- Some Built In Transformation in Glue Studio
 
 ![alt text](image-15.png)
+
+#### Add a custom Transorf in Glue (Example)
+- Upload both the file in Glue s3 bucket.
+
+Custom Transform
+1. demo_transform_cancelled.py
+
+from awsglue import DynamicFrame
+ 
+def remove_cancelled_flights(self, cancelled_col_name):
+    return self.filter(lambda rec: rec[cancelled_col_name] != 1)
+   
+DynamicFrame.remove_cancelled_flights = remove_cancelled_flights
+
+
+2. demo_transform_cancelled.json
+
+{
+"name": "demo_transform_cancelled",
+"displayName": "Remove Cancelled Flights",
+"description": "A simple example to remove the cancelled flights entries from the flights data set",
+"functionName": "remove_cancelled_flights",
+"parameters": [
+   {
+    "name": "cancelled_col_name",
+    "displayName": "Cancelled Column",
+    "type": "str",
+    "description": "Name of the column in the data that holds the cancelled value",
+    "listOptions": "column"
+   }
+  ]
+}
+
+## What are the Magic Command in Jupyter Notebook Interacactive Shell 
+In AWS Glue interactive sessions for Jupyter notebooks, magic commands are shortcut configurations prefixed with % (line magics) used to set up compute resources, IAM roles, and external libraries before running your PySpark code. 
+
+- eg. 
+![alt text](image-16.png)
+
+
+[Read More about Magic Command Resource](https://docs.aws.amazon.com/glue/latest/dg/interactive-sessions-magics.html)
