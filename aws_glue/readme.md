@@ -160,3 +160,27 @@ In AWS Glue interactive sessions for Jupyter notebooks, magic commands are short
 
 
 [Read More about Magic Command Resource](https://docs.aws.amazon.com/glue/latest/dg/interactive-sessions-magics.html)
+
+[Job Parameters in Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html#job-parameter-reference)
+
+[Configuration for Job Property in Glue Jobs](https://docs.aws.amazon.com/glue/latest/dg/add-job.html)
+
+[Monitoring with AWS Glue Observability metrics](https://docs.aws.amazon.com/glue/latest/dg/monitor-observability.html)
+## Note- AWS Glue for Ray is no longer open to new customers.(Aws recommended- Amazon Elastic Kubernetes Servic(AEkS))
+
+
+## AWS CloudFormation
+
+- AWS CloudFormation (CFT) is an Infrastructure as Code (IaC) service provided by Amazon Web Services (AWS). It allows users to model, provision, and manage AWS resources in a declarative and automated manner. Instead of manually configuring resources, you define them in templates written in JSON or YAML, and CloudFormation takes care of creating, updating, and managing those resources.
+
+* Key Features of AWS CloudFormation
+
+1. Infrastructure as Code: Define your infrastructure in reusable templates, enabling consistent and repeatable deployments.
+
+2. Automation: Automates the provisioning and configuration of AWS resources, reducing manual effort and errors.
+
+3. Scalability: Easily scale resources up or down based on application needs.
+
+4. Multi-Region Deployments: Replicate infrastructure across multiple AWS regions for high availability and disaster recovery.
+
+5. Change Management: Track and control changes to your infrastructure using version-controlled templates and change sets.
