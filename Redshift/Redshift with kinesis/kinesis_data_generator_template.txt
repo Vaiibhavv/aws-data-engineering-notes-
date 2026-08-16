@@ -1,0 +1,28 @@
+{
+
+   "_id" : "{{random.uuid}}",
+   "clusterID": "{{random.number(
+        {   "min":1,
+            "max":50
+        }
+    )}}",
+    "connectionTime": "{{date.now("YYYY-MM-DD HH:mm:ss")}}",
+    "kWhDelivered": "{{commerce.price}}",
+    "stationID": "{{random.number(
+        {   "min":1,
+            "max":467
+        }
+    )}}",
+      "spaceID": "{{random.word}}-{{random.number(
+        {   "min":1,
+            "max":20
+        }
+    )}}",
+
+   "timezone": "America/Los_Angeles",
+   "userID": "{{random.number(
+        {   "min":1000,
+            "max":500000
+        }
+    )}}"
+}
