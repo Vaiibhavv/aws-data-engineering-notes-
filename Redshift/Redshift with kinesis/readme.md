@@ -125,4 +125,31 @@ Resources:
 
 --- 
 
+### Kinesis Data Generator ( KDS)
 
+- Kinesis Data Generator, commonly called KDG, is basically a web-based tool for generating test data and sending it into Kinesis.
+
+- It is useful when you don't have a real application producing events yet.
+
+For example, suppose you want to test:
+
+```
+KDG
+ ↓
+Kinesis Data Stream
+ ↓
+Redshift Streaming Ingestion
+ ↓
+Materialized View
+ ↓
+SQL Analytics
+```
+- `KDS is a fake producer`
+
+* Is KDG part of Kinesis ....>>> - No.
+
+
+- Kinesis Data Streams = AWS streaming service
+
+- Kinesis Data Generator= external/testing utility
+- KDG is not the stream itself.It simply writes test records into the stream.
