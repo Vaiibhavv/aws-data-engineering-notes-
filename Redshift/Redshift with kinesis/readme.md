@@ -153,3 +153,6 @@ SQL Analytics
 
 - Kinesis Data Generator= external/testing utility
 - KDG is not the stream itself.It simply writes test records into the stream.
+- CloudFormation can create the required AWS infrastructure consistently. AWS tutorials have used CloudFormation templates to set up Kinesis resources and KDG authentication resources.
+Test data
+`You need something to generate events. That's KDG.`
