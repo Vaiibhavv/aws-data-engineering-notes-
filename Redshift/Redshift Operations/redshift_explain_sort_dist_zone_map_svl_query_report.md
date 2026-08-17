@@ -447,6 +447,12 @@ Block 4 → Jan 10 possible? NO
 So it can potentially scan only Block 2.
 
 ---
+# What is a colocated join in Redshift?"
+`The matching rows of two tables are already stored on the same slice, so Redshift can join them locally without moving a lot of data across the network`
+
+1. "A colocated join occurs when the rows required for a join are distributed to the same slices, typically by using compatible distribution keys. Because the matching data is already on the same slice, Redshift can perform the join locally and avoid expensive data redistribution across the cluster."
+
+
 
 # 10. SORTKEY and Zone Map Relationship
 
