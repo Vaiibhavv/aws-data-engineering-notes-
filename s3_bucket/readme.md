@@ -48,3 +48,41 @@
 * ![alt text](image-4.png)
 
 * ![alt text](image-5.png)
+
+## Versioning in S3 Buckets
+
+- Versioning in S3 buckets is a feature that allows you to keep multiple versions of an object in the same bucket. This can be useful for data recovery, auditing, and maintaining historical records of your data.
+- To enable versioning, you can use the S3 console, AWS CLI, or SDKs. Once versioning is enabled, every time you upload a new version of an object, S3 will automatically create a new version ID for that object.
+- You can retrieve previous versions of an object by specifying the version ID in your request. This allows you to restore or access older versions of your data as needed.
+- Versioning can also help protect against accidental deletions or overwrites, as you can recover previous versions of an object even if the current version is deleted or modified.
+
+![alt text](image-7.png)
+
+![alt text](image-8.png)\
+
+![alt text](image-9.png)
+
+![alt text](image-10.png)
+
+- Versioning can be affect ed by lifecycle policies, which can be used to automatically delete or transition older versions of objects based on your defined rules. This helps manage storage costs and keeps your S3 bucket organized.
+
+- Need to update the lifecycle policies to include versioning rules, such as setting expiration for non-current versions or transitioning them to cheaper storage classes. This ensures that your S3 bucket remains cost-effective while still retaining important historical data.
+
+## How to delete a versioned object in S3
+- To delete a versioned object in S3, you can use the following steps:
+1. **List Object Versions**: Use the S3 console, AWS CLI, or SDK
+    to list all versions of the object you want to delete. This will show you the version IDs associated with that object.
+2. **Delete Specific Version**: Once you have the version ID of the object you want to delete, you can use the S3 console, AWS CLI, or SDK to delete that specific version. This will remove that version from the bucket while keeping other versions intact.
+
+
+## Amazon S3 Cross-Region Replication (CRR)
+- Amazon S3 Cross-Region Replication (CRR) is a feature that allows you to automatically replicate objects from one S3 bucket to another bucket in a different AWS region. This can help improve data durability, availability, and compliance with regulatory requirements.
+
+![alt text](image-11.png)
+
+![alt text](image-12.png)
+
+![alt text](image-13.png)
+
+![alt text](image-15.png)
+
