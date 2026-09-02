@@ -13,3 +13,38 @@
 3. Run the Glue crawler to catalog the data and recognize the partitioned structure. This will allow you to query the data using tools like Amazon Athena or Redshift Spectrum. Glue data catalog stores metadata about the partitioned data, making it easier to query and analyze.
 
 3. **Use S3 Select or Athena**: If you are using S3 Select or Amazon Athena, you can take advantage of partitioning to optimize your queries. When querying partitioned data, specify the partition keys in your query to limit the amount of data scanned, which can significantly improve performance and reduce costs.
+
+
+## Amazon S3 Life Cycle Management (S3 Storage Class Analysis)
+
+1. **Define Lifecycle Policies**: Use S3 Lifecycle policies to automatically transition objects between different storage classes based on their age or access patterns. For example, you can move older data to cheaper storage classes like S3 Glacier or S3 Intelligent-Tiering.
+
+2. **Set Expiration Rules**: You can also set expiration rules to automatically delete objects that are no longer needed after a certain period. This helps manage storage costs and keeps your S3 bucket organized.
+
+![alt text](image-6.png)
+
+3. **Set Transition Rules**: Define rules to transition objects to different storage classes based on their age or access patterns. For example, you can transition objects to S3 Standard-IA after 30 days of inactivity, and then to S3 Glacier after 90 days.
+
+## What are the Different S3 Storage Classes?
+
+- Amazon S3 offers several storage classes to help you optimize costs and performance based on your data access patterns. The main storage classes include:
+1. **S3 Standard**: Designed for frequently accessed data, offering low latency and high throughput. Ideal for a wide range of use cases.
+
+![alt text](image.png)
+
+2. **S3 Intelligent-Tiering**: Automatically moves data between two access tiers (frequent and infrequent) based on changing access patterns, helping to optimize costs without performance impact. `If the data is not accessed for 30 consecutive days, it will be moved to the infrequent access tier.` and `If data is not accessed for 90 consecutive days, it will be moved to the archive access tier.` and `If data is not accessed for 60 consecutive days, it will be moved to the deep archive access tier.`
+
+![alt text](image-1.png)
+
+3. **S3 Standard-IA (Infrequent Access)**: Suitable for data that is accessed less frequently but requires rapid access when needed. It offers lower storage costs compared to S3 Standard.
+
+4. **S3 One Zone-IA**: Similar to S3 Standard-IA but stores data in a single availability zone, making it a lower-cost option for infrequently accessed data that can be recreated if the availability zone fails. 
+5. **S3 Glacier**: Designed for long-term archival of data that is infrequently accessed. It offers low storage costs but has higher retrieval times compared to other storage classes.
+
+![alt text](image-2.png)
+
+* ![alt text](image-3.png)
+
+* ![alt text](image-4.png)
+
+* ![alt text](image-5.png)
