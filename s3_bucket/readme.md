@@ -112,3 +112,59 @@
 - **IAM Policies**: IAM policies are used to manage access to AWS resources, including S3. You can create IAM policies that define permissions for specific users or groups, and attach those policies to IAM roles or users to control access to your S3 buckets and objects.
 
 ![alt text](image-16.png)
+
+## Access Points in S3 Buckets
+
+`Amazon S3 Access Points are named network endpoints with dedicated access policies used to manage data access at scale for shared datasets in Amazon S3`.
+
+### Why Use S3 Access Points?
+- Managing a single, massive bucket policy for hundreds of applications with different permissions is difficult, error-prone, and can hit bucket policy size limits. Access points solve this by breaking down a single large bucket policy into distinct, manageable control points for individual applications or teams.
+
+- Amazon S3 Access Points simplify managing data access at scale for shared datasets in S3. Each access point has its own policy and can be used to enforce specific permissions for different applications or users accessing the same bucket.
+
+
+#### Key Features and Capabilities
+
+1. Individualized Access Policies: Each access point has its own resource-based IAM policy. You can tailor permissions specifically for the application using that exact endpoint.
+2. Network Isolation: You can restrict an access point to only accept traffic from a specific Virtual Private Cloud (VPC). This blocks all public internet access to the data through that path.
+3. Unique Amazon Resource Names (ARNs): Applications reference the access point ARN rather than the bucket ARN to perform data operations (like GetObject and PutObject).
+4. Massive Scale: You can create thousands of access points per AWS account and per region, eliminating the risk of hitting the 20 KB bucket policy size limitation.
+5. Block Public Access: Each access point includes its own Block Public Access settings, allowing you to enforce strict public restrictions independently of the underlying bucket configuration.
+
+**How it works**:
+
+```[ Application A ] ---> [ Access Point A (VPC Only Policy) ] ---\
+                                                                ===> [ Single Shared S3 Bucket ]
+[ Application B ] ---> [ Access Point B (Read-Only Policy) ] ---/ 
+```
+---
+
+### Common Use CasesShared Data Lakes: 
+- A central analytics bucket can grant Read-Only access to a data science team via one access point, while granting Read/Write access to an ingestion pipeline via another.
+
+- Internal Application Isolation: Ensuring compliance by forcing internal financial applications to access S3 data strictly through VPC-bound access points, preventing accidental external exposure.
+
+## Object Lambda in S3 Buckets
+
+- Amazon S3 Object Lambda allows you to add your own code to process data retrieved from S3 before returning it to an application. This enables you to modify and transform data on-the-fly without needing to store multiple versions of the same object.
+
+- Instead of storing multiple static variations of a single dataset—such as redacted files or resized images—you store one master file and transform it on the fly when an application requests it.
+
+**How It WorksThe Request:**
+1. An application sends a standard request (like GetObject) to the Object Lambda Access Point ARN instead of the raw bucket.
+2. The Trigger: S3 automatically calls the attached AWS Lambda function and passes the requested object data to it.
+3. The Transformation: Your code processes the data in memory (redacting text, changing formats, or resizing).
+4. The Response: The function streams the transformed result back to the calling application.
+
+![alt text](image-17.png)
+
+#### **Common Use Cases**
+- **Data Redacting**: Automatically mask or remove sensitive personal identifiable information (PII) for specific users.
+- **Format Conversion**: Translate data dynamically, such as converting a file from XML to JSON or CSV.
+- **Image Resizing**: Alter image dimensions on the fly based on the requesting device's resolution needs.
+- **Data Enrichment**: Add extra metadata or append external database details to log files during retrieval.
+
+#### Key Benefits
+- **No Data Duplication**: Saves storage costs by eliminating the need to save redundant derived copies of objects.
+- **Seamless Integration**: Works with existing standard S3 APIs (GetObject, HeadObject, ListObjects) without altering core infrastructure.
+- **Custom Security**: Allows fine-grained access control so different teams get tailored views of the same master dataset.
