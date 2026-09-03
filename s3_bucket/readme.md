@@ -168,3 +168,21 @@
 - **No Data Duplication**: Saves storage costs by eliminating the need to save redundant derived copies of objects.
 - **Seamless Integration**: Works with existing standard S3 APIs (GetObject, HeadObject, ListObjects) without altering core infrastructure.
 - **Custom Security**: Allows fine-grained access control so different teams get tailored views of the same master dataset.
+
+## Event Notifications in S3 Buckets
+- Amazon S3 Event Notifications allow you to receive notifications when certain events occur in your S3 bucket, such as object creation, deletion, or modification. This enables you to automate workflows and trigger actions based on changes in your S3 data.
+
+![alt text](image-18.png)
+
+![alt text](image-19.png)
+
+**How to Configure Event Notifications:**
+1. **Choose Event Types**: Select the types of events you want to receive notifications for, such as object creation (PUT), deletion (DELETE), or restoration from Glacier.
+2. **Select Destination**: Specify where you want the notifications to be sent. You can send notifications to an Amazon Simple Notification Service (SNS) topic, an Amazon Simple Queue Service (SQS) queue, or trigger an AWS Lambda function.
+3. **Set Filters (Optional)**: You can set filters to receive notifications only for specific objects or prefixes. For example, you can receive notifications only for objects with a certain file extension or within a specific folder in your bucket.
+
+**How to send notifications to an SNS topic:**
+1. Create an SNS topic in the AWS Management Console. 
+2. Subscribe to the SNS topic by adding the email addresses or endpoints that should receive the notifications. You can also configure the subscription to use other protocols like HTTP/S or Lambda functions.
+3. Also add the  Access policy using json to the SNS topic to allow S3 to publish messages to it. This can be done by adding a policy statement that grants the S3 service permission to publish to the topic.
+4. Configure your S3 bucket to send event notifications to the SNS topic by specifying the topic  name and event types like object creation or deletion. Including (Create, delete , put) s3 object.
